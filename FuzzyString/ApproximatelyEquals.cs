@@ -10,6 +10,11 @@ namespace FuzzyString
     { 
         public static bool ApproximatelyEquals(this string source, string target,  FuzzyStringComparisonTolerance tolerance, params FuzzyStringComparisonOptions[] options)
         {
+            if (string.IsNullOrWhiteSpace(source))
+            {
+                return string.IsNullOrWhiteSpace(target);
+            }
+
             List<double> comparisonResults = new List<double>();
 
             if (!options.Contains(FuzzyStringComparisonOptions.CaseSensitive))
